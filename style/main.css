@@ -11,7 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .input {
@@ -31,7 +31,7 @@ body {
 }
 
 
-.card__show {
+.card {
 
     display: flex;
     flex-wrap: wrap;
@@ -39,7 +39,22 @@ body {
 }
 
 
-.card__show__title {
+.card__show {
 
     margin: 20px;
+    list-style: none;
+    text-align: center;
+    text-transform: capitalize;
+
+}
+
+.card__show__title {
+    flex-basis: 25%;
+}
+
+.img__card {
+    border-radius: 5px;
+    border: 2px solid black;
+    width: 90px;
+
 }
