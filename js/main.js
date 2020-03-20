@@ -19,16 +19,37 @@ function getInfoApiShow(ev) {
           image: data[index].show.image.medium
         });
       }
-      getResultsApi(saveShow);
+      //   getResultsApi(saveShow);
+      paintResultShow();
     });
 }
 
-function getResultsApi(DataShow) {
-  console.log(DataShow);
-}
+// function getResultsApi(saveShow) {
+//   //   console.log(saveShow);
+// }
 
 // pintar html de los datos buscados por el usuario
 
-// evento click del botón buscar
+function paintResultShow() {
+  let htmlCodeShow = '';
 
+  for (const show of saveShow) {
+    htmlCodeShow += `<li class="card__show__title">`;
+    htmlCodeShow += `<h3> ${show.name}</h3>`;
+    if (show.image === '') {
+      htmlCodeShow += `<img src="https://via.placeholder.com/210x295/ffffff/666666/?
+      text=TV">`;
+    } else {
+      htmlCodeShow += `<img src="${show.image}" alt="Image- of-${show.name}">`;
+    }
+    htmlCodeShow += `</li>`;
+    console.log(show.name);
+    console.log(show.image);
+  }
+
+  show.innerHTML = htmlCodeShow;
+}
+
+// evento click del botón buscar
+btn.addEventListener('click', paintResultShow);
 btn.addEventListener('click', getInfoApiShow);
