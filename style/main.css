@@ -1,7 +1,8 @@
 body {
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
 }
 
 
@@ -10,7 +11,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Raleway', sans-serif;
+
     font-size: 17px;
 }
 
@@ -28,16 +29,33 @@ body {
     background-color: rgb(47, 209, 133);
     color: rgb(0, 0, 0);
     width: 100px;
+    font-weight: bold;
 }
 
+.list {
+    list-style: none;
+    text-align: center;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .card {
 
     display: flex;
     flex-wrap: wrap;
+    flex-basis: 70%;
+    justify-content: space-around;
 
 }
 
+.container__cards {
+
+    display: flex;
+    justify-content: space-between;
+
+}
 
 .card__show {
 
@@ -46,15 +64,26 @@ body {
     text-align: center;
     text-transform: capitalize;
 
+
+
 }
 
-.card__show__title {
-    flex-basis: 25%;
-}
 
-.img__card {
+
+.card__show__img {
     border-radius: 5px;
     border: 2px solid black;
     width: 90px;
+
+}
+
+.js-button {
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: rgb(47, 209, 133);
+    color: rgb(0, 0, 0);
+    width: 80px;
+    font-weight: bold;
 
 }
