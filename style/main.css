@@ -32,14 +32,7 @@ body {
     font-weight: bold;
 }
 
-.list {
-    list-style: none;
-    text-align: center;
-    margin: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+
 
 .card {
 
@@ -60,15 +53,21 @@ body {
 .card__show {
 
     margin: 20px;
+    text-transform: capitalize;
     list-style: none;
     text-align: center;
-    text-transform: capitalize;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 
 }
 
+.card__show__fav {
 
+    background-color: blue;
+    color: red;
+}
 
 .card__show__img {
     border-radius: 5px;

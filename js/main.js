@@ -3,6 +3,7 @@ const btn = document.querySelector('.js-btn');
 const inputText = document.querySelector('.js-input');
 const inputTextValue = inputText.value;
 let show = document.querySelector('.js-show');
+const btnreset = document.querySelector('.button__reset');
 let saveShow = [];
 let favouriteShows = [];
 
@@ -42,7 +43,7 @@ function paintResultShow() {
 
   for (const show of saveShow) {
 
-    htmlCodeShow += `<li class="list" class="card__show">`;
+    htmlCodeShow += `<li class="card__show js-card-show" id="${show.id}">`;
     htmlCodeShow += `<h3 class="card__show__title"> ${show.name}</h3>`;
     htmlCodeShow += `<img class="card__show__img" src="${show.image}">`;
     htmlCodeShow += `<button class="js-button js-id"  data-id="${show.id}" >Add to favourites</button>`
@@ -54,7 +55,7 @@ function paintResultShow() {
 }
 
 
-// elegir serie favorita
+// escuchar serie favorita
 
 
 function lintenFavouriteShow() {
@@ -62,33 +63,47 @@ function lintenFavouriteShow() {
   const btnfavourite = document.querySelectorAll('.js-id');
   for (const btn of btnfavourite) {
     btn.addEventListener('click', addFavouriteShow);
+
   }
+
 }
 
+// añadir serie favorita 
 
 function addFavouriteShow(ev) {
-  const clickedIdShow = ev.target.dataset.id;
+  let clickedIdShow = ev.target.dataset.id;
   let foundFavouriteShow;
   for (let show of saveShow) {
     if (show.id === parseInt(clickedIdShow)) {
-
       foundFavouriteShow = show;
     }
   }
 
+  function addColorToFavorites() {
+    const liIds = document.querySelectorAll('.js-card-show');
+    for (const liId of liIds) {
+      if (liId.id === clickedIdShow) {
 
+        liId.classList.add('card__show__fav');
+
+      }
+    }
+
+  }
+
+  addColorToFavorites();
   favouriteShows.push({
     id: foundFavouriteShow.id,
     name: foundFavouriteShow.name,
     image: foundFavouriteShow.image
-  })
 
+  })
   setInLocalStorage();
   paintFavouritesShows();
 }
 
 
-// función para pintar las series favoritas
+// función para pintar en html las series favoritas
 
 const ulFavourite = document.querySelector('.card__favourites');
 
@@ -98,16 +113,44 @@ function paintFavouritesShows() {
 
   for (const favourite of favouriteShows) {
 
-    htmlCodeFavouriteShow += `<li class="list" class="card__show">`;
+    htmlCodeFavouriteShow += `<li class="list" class="card__show" id="${favourite.id}">`;
     htmlCodeFavouriteShow += `<h3 class="card__show__title"> ${favourite.name}</h3>`;
     htmlCodeFavouriteShow += `<img class="card__show__img" src="${favourite.image}">`;
     htmlCodeFavouriteShow += `</li>`;
+    htmlCodeFavouriteShow += `<button class="js-button js-id-remove"  data-id="${favourite.id}" >Delete favourites</button>`
 
   }
   ulFavourite.innerHTML = htmlCodeFavouriteShow;
   setInLocalStorage();
   lintenFavouriteShow();
+  detectBtnRemove();
 }
+
+// eliminar de la lista de favoritos
+
+function detectBtnRemove() {
+  const btnremovefavorite = document.querySelectorAll('.js-id-remove');
+
+  for (const btnremove of btnremovefavorite) {
+    btnremove.addEventListener('click', removeFavorite);
+  }
+}
+
+
+function removeFavorite(ev) {
+  const clickedDeleted = ev.currentTarget;
+  for (let index = 0; index < favouriteShows.length; index++) {
+    if (clickedDeleted === parseInt(favouriteShows[index].id))
+
+      console.log(favouriteShows[index].id);
+    favouriteShows.splice(index, 1);
+  }
+
+  paintFavouritesShows();
+  setInLocalStorage();
+
+}
+
 
 // funcion para guardar favoritas en localstorage
 function getFromLocalStorage() {
@@ -115,6 +158,7 @@ function getFromLocalStorage() {
   if (localStorageShow !== null) {
     favouriteShows = JSON.parse(localStorageShow);
     paintFavouritesShows();
+
   }
 }
 
