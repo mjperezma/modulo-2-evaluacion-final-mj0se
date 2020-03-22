@@ -13,7 +13,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    margin-left: 50px;
     font-size: 17px;
 
 }
@@ -25,18 +25,11 @@ body {
 .input {
     padding: 7px;
     border-radius: 5px;
+    width: 150px;
     border: solid black 2px;
 }
 
-.button__reset {
-    background-color: #755DD9;
-    border: solid 2px #fff;
-    color: #fff;
-    width: 80px;
-    border-radius: 5px;
-    margin-left: 40px;
 
-}
 
 .button {
 
@@ -48,6 +41,17 @@ body {
     width: 100px;
     font-weight: bold;
     border: 2px #ffffff solid;
+    margin-left: 30px;
+
+    &__reset {
+        background-color: #755DD9;
+        border: solid 2px #fff;
+        color: #fff;
+        width: 80px;
+        border-radius: 5px;
+        display: block;
+        margin: 0 auto;
+    }
 }
 
 
@@ -59,6 +63,17 @@ body {
     flex-basis: 70%;
     justify-content: space-around;
 
+    &__show {
+        margin: 20px;
+        text-transform: capitalize;
+        list-style: none;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
 }
 
 .container__cards {
@@ -68,23 +83,19 @@ body {
 
 }
 
-.card__show {
 
-    margin: 20px;
-    text-transform: capitalize;
+
+.container__list {
+
     list-style: none;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-
 }
 
 .card__show__fav {
 
-    background-color: #ACA8C6;
+    background-color: #8B5D76;
     color: #fff;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .card__show__img {
@@ -94,7 +105,14 @@ body {
 
 }
 
-.js-button {
+.card__show__div {
+
+    display: flex;
+    align-items: center;
+}
+
+.js-button-add {
+
     margin-top: 20px;
     border-radius: 5px;
     padding: 5px;
@@ -102,6 +120,18 @@ body {
     border: solid 2px #fff;
     color: #fff;
     width: 80px;
+    font-weight: bold;
+}
+
+.js-button {
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #755DD9;
+    border: solid 2px #fff;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
     font-weight: bold;
 
 }

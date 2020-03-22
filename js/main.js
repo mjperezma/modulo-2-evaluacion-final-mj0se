@@ -42,7 +42,7 @@ function getHtmlCodeResultShow(show) {
   htmlCode += `<li class="card__show js-card-show" id="${show.id}">`;
   htmlCode += `<h3 class="card__show__title"> ${show.name}</h3>`;
   htmlCode += `<img class="card__show__img" src="${show.image}">`;
-  htmlCode += `<button class="js-button js-id"  data-id="${show.id}" >Add to favourites</button>`;
+  htmlCode += `<button class="js-button-add js-id"  data-id="${show.id}" >Add to favourites</button>`;
   htmlCode += `</li>`;
   return htmlCode;
 }
@@ -115,11 +115,13 @@ const ulFavourite = document.querySelector('.card__favourites');
 function getHtmlCodeFavShow(favourite) {
   let htmlCodeFav = '';
 
-  htmlCodeFav += `<li class="list" class="card__show" id="${favourite.id}">`;
+  htmlCodeFav += `<li class="container__list" class="card__show" id="${favourite.id}">`;
   htmlCodeFav += `<h3 class="card__show__title"> ${favourite.name}</h3>`;
+  htmlCodeFav += `<div class="card__show__div">`;
   htmlCodeFav += `<img class="card__show__img" src="${favourite.image}">`;
+  htmlCodeFav += `<button class="js-button js-id-remove"  data-id="${favourite.id}" ><i class="fa fa-times" aria-hidden="true"></i></button>`;
   htmlCodeFav += `</li>`;
-  htmlCodeFav += `<button class="js-button js-id-remove"  data-id="${favourite.id}" >Delete favourites</button>`;
+  htmlCodeFav += `</div>`;
 
   return htmlCodeFav;
 }
@@ -143,7 +145,7 @@ function detectBtnRemove() {
     btnremove.addEventListener('click', removeFavorite);
   }
 }
-
+// eliminar un elemento de la lista
 function removeFavorite(ev) {
   const clickedDeleted = ev.currentTarget;
   for (let index = 0; index < favouriteShows.length; index++) {
@@ -153,6 +155,19 @@ function removeFavorite(ev) {
 
   paintCodeFavouriteShow();
   setInLocalStorage();
+}
+
+// evento del boton borrar todos
+const buttonAll = document.querySelector('.button__reset');
+buttonAll.addEventListener('click', removeAllFavourites);
+
+// eliminar todos los elementos de la lista de fav
+function removeAllFavourites() {
+  for (let index = 0; index < favouriteShows.length; index++) {
+    favouriteShows.splice(favouriteShows[index], favouriteShows.length);
+    ulFavourite.innerHTML = '';
+    setInLocalStorage();
+  }
 }
 
 // funcion para guardar favoritas en localstorage
