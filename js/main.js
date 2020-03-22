@@ -40,10 +40,9 @@ function getInfoApiShow(ev) {
 
 function getHtmlCodeResultShow(show) {
   let htmlCode = '';
-  htmlCode += `<li class="card__show js-card-show" id="${show.id}">`;
+  htmlCode += `<li class="card__show js-card-show" data-id="${show.id}">`;
   htmlCode += `<h3 class="card__show__title"> ${show.name}</h3>`;
   htmlCode += `<img class="card__show__img" src="${show.image}">`;
-  htmlCode += `<button class="button button--add js-id"  data-id="${show.id}" >Add to favourites</button>`;
   htmlCode += `</li>`;
   return htmlCode;
 }
@@ -62,7 +61,7 @@ function paintResultShow() {
 // escuchar serie favorita
 
 function lintenFavouriteShow() {
-  const btnfavourite = document.querySelectorAll('.js-id');
+  let btnfavourite = document.querySelectorAll('.js-card-show');
   for (const btn of btnfavourite) {
     btn.addEventListener('click', addFavouriteShow);
   }
@@ -72,7 +71,7 @@ function lintenFavouriteShow() {
 
 function addFavouriteShow(ev) {
   // obtener el id de la serie clickada
-  let clickedIdShow = ev.target.dataset.id;
+  let clickedIdShow = ev.currentTarget.dataset.id;
   let foundItemFavouriteShow;
   for (let item of favouriteShows) {
     if (item.id === parseInt(clickedIdShow)) {
@@ -87,16 +86,6 @@ function addFavouriteShow(ev) {
         foundFavouriteShow = show;
       }
     }
-    // añadir color a series favoritas
-    function addColorToFavorites() {
-      const listFavIds = document.querySelectorAll('.js-card-show');
-      for (const liFav of listFavIds) {
-        if (liFav.id === clickedIdShow) {
-          liFav.classList.add('card__show__fav');
-        }
-      }
-    }
-    addColorToFavorites();
 
     // añadirlo a favoritos
     favouriteShows.push({
@@ -106,6 +95,7 @@ function addFavouriteShow(ev) {
     });
   }
   setInLocalStorage();
+  paintResultShow();
   paintCodeFavouriteShow();
 }
 
@@ -134,27 +124,27 @@ function paintCodeFavouriteShow() {
     htmlFavShow += getHtmlCodeFavShow(favourite);
   }
   ulFavourite.innerHTML = htmlFavShow;
-  setInLocalStorage();
   detectBtnRemove();
 }
 // eliminar de la lista de favoritos
 
 function detectBtnRemove() {
   const btnremovefavorite = document.querySelectorAll('.js-id-remove');
-
   for (const btnremove of btnremovefavorite) {
     btnremove.addEventListener('click', removeFavourite);
   }
 }
 // eliminar un elemento de la lista
 function removeFavourite(ev) {
-  const clickedDeleted = ev.currentTarget.dataset.id;
+  const clickedDeleted = parseInt(ev.currentTarget.dataset.id);
   for (let index = 0; index < favouriteShows.length; index++) {
-    if (clickedDeleted === parseInt(favouriteShows[index].id));
-    favouriteShows.splice(index, 1);
+    if (clickedDeleted === favouriteShows[index].id) {
+      favouriteShows.splice(index, 1);
+    }
   }
-  paintCodeFavouriteShow();
   setInLocalStorage();
+  paintResultShow();
+  paintCodeFavouriteShow();
 }
 
 // evento del boton borrar todos
@@ -165,9 +155,10 @@ buttonAll.addEventListener('click', removeAllFavourites);
 function removeAllFavourites() {
   for (let index = 0; index < favouriteShows.length; index++) {
     favouriteShows.splice(favouriteShows[index], favouriteShows.length);
-    ulFavourite.innerHTML = '';
-    setInLocalStorage();
   }
+  setInLocalStorage();
+  paintResultShow();
+  paintCodeFavouriteShow();
 }
 
 // funcion para guardar favoritas en localstorage
@@ -175,6 +166,7 @@ function getFromLocalStorage() {
   const localStorageShow = localStorage.getItem('favourite');
   if (localStorageShow !== null) {
     favouriteShows = JSON.parse(localStorageShow);
+    paintResultShow();
     paintCodeFavouriteShow();
   }
 }
