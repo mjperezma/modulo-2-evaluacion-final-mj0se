@@ -37,10 +37,14 @@ function getInfoApiShow(ev) {
 }
 
 // creo el código html de los datos buscados por el usuario
-
 function getHtmlCodeResultShow(show) {
   let htmlCode = '';
   htmlCode += `<li class="card__show js-card-show" data-id="${show.id}">`;
+  for (let index = 0; index < favouriteShows.length; index++) {
+    if (show.id === favouriteShows[index].id) {
+      htmlCode += `<li class="card__show js-card-show card__show__fav" data-id="${show.id}">`;
+    }
+  }
   htmlCode += `<h3 class="card__show__title"> ${show.name}</h3>`;
   htmlCode += `<img class="card__show__img" src="${show.image}">`;
   htmlCode += `</li>`;
@@ -61,9 +65,9 @@ function paintResultShow() {
 // escuchar serie favorita
 
 function lintenFavouriteShow() {
-  let btnfavourite = document.querySelectorAll('.js-card-show');
-  for (const btn of btnfavourite) {
-    btn.addEventListener('click', addFavouriteShow);
+  let elementFavorites = document.querySelectorAll('.js-card-show');
+  for (const element of elementFavorites) {
+    element.addEventListener('click', addFavouriteShow);
   }
 }
 
