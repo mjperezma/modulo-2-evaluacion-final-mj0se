@@ -46,14 +46,22 @@ body {
   margin-left: 30px;
 }
 
-.button__reset {
-  background-color: #755DD9;
-  border: solid 2px #fff;
-  color: #fff;
+.button--reset {
   width: 80px;
-  border-radius: 5px;
   display: block;
   margin: 0 auto;
+}
+
+.button--delete {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px;
+}
+
+.button--add {
+  width: 80px;
+  margin-left: 0px;
 }
 
 .card {
@@ -83,6 +91,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  height: 270px;
 }
 
 .container__cards {
@@ -103,6 +112,7 @@ body {
   color: #fff;
   padding: 10px;
   border-radius: 5px;
+  height: 270px;
 }
 
 .card__show__img {
@@ -118,28 +128,5 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.js-button-add {
-  margin-top: 20px;
-  border-radius: 5px;
-  padding: 5px;
-  background-color: #755DD9;
-  border: solid 2px #fff;
-  color: #fff;
-  width: 80px;
-  font-weight: bold;
-}
-
-.js-button {
-  border-radius: 50%;
-  padding: 5px;
-  background-color: #755DD9;
-  border: solid 2px #fff;
-  color: #fff;
-  width: 30px;
-  height: 30px;
-  margin-left: 10px;
-  font-weight: bold;
 }
 /*# sourceMappingURL=main.css.map */

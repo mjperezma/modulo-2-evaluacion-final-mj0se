@@ -6,6 +6,7 @@ let show = document.querySelector('.js-show');
 const btnreset = document.querySelector('.button__reset');
 let saveShow = [];
 let favouriteShows = [];
+let favoritesShowsSelected = [];
 
 // solicitar datos a la api solo de lo que queremos imprimir, imagen, nombre e id :
 
@@ -42,7 +43,7 @@ function getHtmlCodeResultShow(show) {
   htmlCode += `<li class="card__show js-card-show" id="${show.id}">`;
   htmlCode += `<h3 class="card__show__title"> ${show.name}</h3>`;
   htmlCode += `<img class="card__show__img" src="${show.image}">`;
-  htmlCode += `<button class="js-button-add js-id"  data-id="${show.id}" >Add to favourites</button>`;
+  htmlCode += `<button class="button button--add js-id"  data-id="${show.id}" >Add to favourites</button>`;
   htmlCode += `</li>`;
   return htmlCode;
 }
@@ -119,7 +120,7 @@ function getHtmlCodeFavShow(favourite) {
   htmlCodeFav += `<h3 class="card__show__title"> ${favourite.name}</h3>`;
   htmlCodeFav += `<div class="card__show__div">`;
   htmlCodeFav += `<img class="card__show__img" src="${favourite.image}">`;
-  htmlCodeFav += `<button class="js-button js-id-remove"  data-id="${favourite.id}" ><i class="fa fa-times" aria-hidden="true"></i></button>`;
+  htmlCodeFav += `<button class="button button--delete js-button js-id-remove"  data-id="${favourite.id}" ><i class="fa fa-times" aria-hidden="true"></i></button>`;
   htmlCodeFav += `</li>`;
   htmlCodeFav += `</div>`;
 
@@ -142,23 +143,22 @@ function detectBtnRemove() {
   const btnremovefavorite = document.querySelectorAll('.js-id-remove');
 
   for (const btnremove of btnremovefavorite) {
-    btnremove.addEventListener('click', removeFavorite);
+    btnremove.addEventListener('click', removeFavourite);
   }
 }
 // eliminar un elemento de la lista
-function removeFavorite(ev) {
-  const clickedDeleted = ev.currentTarget;
+function removeFavourite(ev) {
+  const clickedDeleted = ev.currentTarget.dataset.id;
   for (let index = 0; index < favouriteShows.length; index++) {
     if (clickedDeleted === parseInt(favouriteShows[index].id));
     favouriteShows.splice(index, 1);
   }
-
   paintCodeFavouriteShow();
   setInLocalStorage();
 }
 
 // evento del boton borrar todos
-const buttonAll = document.querySelector('.button__reset');
+const buttonAll = document.querySelector('.button--reset');
 buttonAll.addEventListener('click', removeAllFavourites);
 
 // eliminar todos los elementos de la lista de fav

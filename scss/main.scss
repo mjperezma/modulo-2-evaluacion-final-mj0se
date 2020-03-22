@@ -8,7 +8,6 @@ body {
 
 }
 
-
 .container {
     display: flex;
     flex-direction: column;
@@ -43,14 +42,24 @@ body {
     border: 2px #ffffff solid;
     margin-left: 30px;
 
-    &__reset {
-        background-color: #755DD9;
-        border: solid 2px #fff;
-        color: #fff;
+    &--reset {
+
         width: 80px;
-        border-radius: 5px;
         display: block;
         margin: 0 auto;
+    }
+
+    &--delete {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+
+    }
+
+    &--add {
+        width: 80px;
+        margin-left: 0px;
     }
 }
 
@@ -71,6 +80,7 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 270px;
 
     }
 
@@ -83,8 +93,6 @@ body {
 
 }
 
-
-
 .container__list {
 
     list-style: none;
@@ -96,6 +104,7 @@ body {
     color: #fff;
     padding: 10px;
     border-radius: 5px;
+    height: 270px;
 }
 
 .card__show__img {
@@ -109,29 +118,4 @@ body {
 
     display: flex;
     align-items: center;
-}
-
-.js-button-add {
-
-    margin-top: 20px;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: #755DD9;
-    border: solid 2px #fff;
-    color: #fff;
-    width: 80px;
-    font-weight: bold;
-}
-
-.js-button {
-    border-radius: 50%;
-    padding: 5px;
-    background-color: #755DD9;
-    border: solid 2px #fff;
-    color: #fff;
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
-    font-weight: bold;
-
 }
