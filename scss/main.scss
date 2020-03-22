@@ -3,6 +3,9 @@ body {
     padding: 0;
     box-sizing: border-box;
     font-family: 'Raleway', sans-serif;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
 }
 
 
@@ -11,8 +14,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     font-size: 17px;
+
+}
+
+.container__cards__title {
+    margin-left: 40px;
 }
 
 .input {
@@ -21,15 +28,26 @@ body {
     border: solid black 2px;
 }
 
+.button__reset {
+    background-color: #755DD9;
+    border: solid 2px #fff;
+    color: #fff;
+    width: 80px;
+    border-radius: 5px;
+    margin-left: 40px;
+
+}
+
 .button {
 
     margin-top: 20px;
     border-radius: 5px;
     padding: 5px;
-    background-color: rgb(47, 209, 133);
-    color: rgb(0, 0, 0);
+    background-color: #755DD9;
+    color: #ffffff;
     width: 100px;
     font-weight: bold;
+    border: 2px #ffffff solid;
 }
 
 
@@ -65,13 +83,13 @@ body {
 
 .card__show__fav {
 
-    background-color: blue;
-    color: red;
+    background-color: #ACA8C6;
+    color: #fff;
 }
 
 .card__show__img {
     border-radius: 5px;
-    border: 2px solid black;
+    border: 2px solid #fff;
     width: 90px;
 
 }
@@ -80,8 +98,9 @@ body {
     margin-top: 20px;
     border-radius: 5px;
     padding: 5px;
-    background-color: rgb(47, 209, 133);
-    color: rgb(0, 0, 0);
+    background-color: #755DD9;
+    border: solid 2px #fff;
+    color: #fff;
     width: 80px;
     font-weight: bold;
 
