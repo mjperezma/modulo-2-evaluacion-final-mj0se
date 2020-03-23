@@ -6,7 +6,6 @@ let show = document.querySelector('.js-show');
 const btnreset = document.querySelector('.button__reset');
 let saveShow = [];
 let favouriteShows = [];
-let favoritesShowsSelected = [];
 
 // solicitar datos a la api solo de lo que queremos imprimir, imagen, nombre e id :
 
@@ -80,7 +79,7 @@ function addFavouriteShow(ev) {
   let foundItemFavouriteShow;
   for (let item of favouriteShows) {
     if (item.id === clickedIdShow) {
-      foundItemFavouriteShow = item;
+      foundItemFavouriteShow = item.id;
     }
   }
   if (foundItemFavouriteShow === undefined) {
@@ -97,6 +96,12 @@ function addFavouriteShow(ev) {
         });
       }
     }
+  } else {
+    for (let index = 0; index < favouriteShows.length; index++) {
+      if (clickedIdShow === favouriteShows[index].id) {
+        favouriteShows.splice(index, 1);
+      }
+    }
   }
   setInLocalStorage();
   paintResultShow();
@@ -109,7 +114,6 @@ const ulFavourite = document.querySelector('.card__favourites');
 
 function getHtmlCodeFavShow(favourite) {
   let htmlCodeFav = '';
-
   htmlCodeFav += `<li class="container__list" class="card__show" id="${favourite.id}">`;
   htmlCodeFav += `<h3 class="card__show__title card__show__title--fav"> ${favourite.name}</h3>`;
   htmlCodeFav += `<div class="card__show__div">`;

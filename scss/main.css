@@ -28,7 +28,7 @@ body {
 }
 
 .container__cards__title {
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .input {
@@ -138,9 +138,8 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
 }
 
 .container__cards__search {
