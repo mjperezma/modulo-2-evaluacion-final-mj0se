@@ -10,7 +10,7 @@
   </head>
   <body>
     <main class="container">
-      <h3 class="title">Select your shows</h3>
+      <h3 class="container__title">Select your shows</h3>
       <input type="text" name="input-title" id="js-input-title" class="input js-input" placeholder="Write here" />
       <button class="button js-btn">Search</button>
     </main>
@@ -20,7 +20,10 @@
         <ul class="card__favourites"></ul>
         <button class="button button--reset">Reset all favorites</button>
       </div>
-      <ul class="card js-show"></ul>
+      <div class="container__cards__search">
+        <h2 class="card__title">When you search, you can select here:</h2>
+        <ul class="card js-show"></ul>
+      </div>
     </section>
     <script src="./js/main.js"></script>
   </body>

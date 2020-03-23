@@ -55,6 +55,7 @@ function getHtmlCodeResultShow(show) {
 
 function paintResultShow() {
   let htmlCodeShow = '';
+
   for (const show of saveShow) {
     htmlCodeShow += getHtmlCodeResultShow(show);
   }
@@ -75,10 +76,10 @@ function lintenFavouriteShow() {
 
 function addFavouriteShow(ev) {
   // obtener el id de la serie clickada
-  let clickedIdShow = ev.currentTarget.dataset.id;
+  let clickedIdShow = parseInt(ev.currentTarget.dataset.id);
   let foundItemFavouriteShow;
   for (let item of favouriteShows) {
-    if (item.id === parseInt(clickedIdShow)) {
+    if (item.id === clickedIdShow) {
       foundItemFavouriteShow = item;
     }
   }
@@ -86,17 +87,16 @@ function addFavouriteShow(ev) {
     // buscar el producto clickado
     let foundFavouriteShow;
     for (let show of saveShow) {
-      if (show.id === parseInt(clickedIdShow)) {
+      if (show.id === clickedIdShow) {
         foundFavouriteShow = show;
+        // añadirlo a favoritos
+        favouriteShows.push({
+          id: foundFavouriteShow.id,
+          name: foundFavouriteShow.name,
+          image: foundFavouriteShow.image
+        });
       }
     }
-
-    // añadirlo a favoritos
-    favouriteShows.push({
-      id: foundFavouriteShow.id,
-      name: foundFavouriteShow.name,
-      image: foundFavouriteShow.image
-    });
   }
   setInLocalStorage();
   paintResultShow();
@@ -111,9 +111,9 @@ function getHtmlCodeFavShow(favourite) {
   let htmlCodeFav = '';
 
   htmlCodeFav += `<li class="container__list" class="card__show" id="${favourite.id}">`;
-  htmlCodeFav += `<h3 class="card__show__title"> ${favourite.name}</h3>`;
+  htmlCodeFav += `<h3 class="card__show__title card__show__title--fav"> ${favourite.name}</h3>`;
   htmlCodeFav += `<div class="card__show__div">`;
-  htmlCodeFav += `<img class="card__show__img" src="${favourite.image}">`;
+  htmlCodeFav += `<img class="card__show__img card__show__img--fav" src="${favourite.image}">`;
   htmlCodeFav += `<button class="button button--delete js-button js-id-remove"  data-id="${favourite.id}" ><i class="fa fa-times" aria-hidden="true"></i></button>`;
   htmlCodeFav += `</li>`;
   htmlCodeFav += `</div>`;
