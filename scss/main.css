@@ -27,11 +27,7 @@ body {
   font-size: 25px;
 }
 
-.container__cards__title {
-  margin-left: 20px;
-}
-
-.input {
+.search__input {
   padding: 7px;
   border-radius: 5px;
   width: 150px;
@@ -110,6 +106,10 @@ body {
   margin: 0;
 }
 
+.card__favourites {
+  padding: 0px;
+}
+
 .card__show {
   text-transform: capitalize;
   list-style: none;
@@ -161,7 +161,7 @@ body {
 .card__show__img {
   border-radius: 5px;
   border: 2px solid #fff;
-  width: 90px;
+  width: 80px;
 }
 
 .card__show__img--fav {
