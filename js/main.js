@@ -21,17 +21,20 @@ function getInfoApiShow(ev) {
           saveShow.push({
             name: data[index].show.name,
             id: data[index].show.id,
-            image: 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV'
+            image: 'https://via.placeholder.com/210x295/ffffff/666666/?text=TV',
+            fecha: data[index].show.premiered
           });
         } else {
           saveShow.push({
             name: data[index].show.name,
             image: data[index].show.image.medium,
-            id: data[index].show.id
+            id: data[index].show.id,
+            fecha: data[index].show.premiered
           });
         }
       }
       paintResultShow();
+      paintResultsNumber();
     });
 }
 
@@ -45,9 +48,21 @@ function getHtmlCodeResultShow(show) {
     }
   }
   htmlCode += `<h3 class="card__show__title"> ${show.name}</h3>`;
+  htmlCode += `<p>La fecha de estreno es ${show.fecha}</p>`;
   htmlCode += `<img class="card__show__img" src="${show.image}">`;
   htmlCode += `</li>`;
   return htmlCode;
+}
+
+function paintResultsNumber() {
+  let numbers = [2, 5, 9];
+  for (let number of numbers) {
+    if (saveShow.length > number) {
+      console.log('El número de resultados es:' + saveShow.length + 'y es mayor que' + number);
+    } else {
+      console.log('El número de resultados es:' + saveShow.length + 'y es menor que' + number);
+    }
+  }
 }
 
 // pinto el resultado del código html
